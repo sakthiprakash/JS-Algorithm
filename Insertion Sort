@@ -1,0 +1,28 @@
+// Insertion Sort
+
+// Get the values one by one
+// first time no option to compare
+// second time compare each other and swap small first
+// Repeat with rest and swap
+
+var compareAndInsert = (array, compare) => {
+  var isSwap = array.length;
+  for(var i = 0; i < array.length; i++){
+      if(array[i] > compare){
+        isSwap = i;
+        break;
+      }
+    }
+  array.splice(isSwap, 0, compare);
+  return array;
+};
+
+var insertionSort = (array) => {
+    var ordered = [], temp;
+    for(var i = 0; i < array.length; i++){
+      ordered = compareAndInsert(ordered, array[i]);
+    }
+    return ordered;
+}
+console.clear();
+console.log(insertionSort([5,1,12,-5,16,2,12,14]));
