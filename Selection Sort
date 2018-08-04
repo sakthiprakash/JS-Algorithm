@@ -1,0 +1,19 @@
+// Find minimum value move first
+// Repeat with next index
+
+var findMinimum = (array) => {
+  return array.indexOf(Math.min.apply(null, array));
+};
+    
+var selectionSort = (array) => {
+  var temp, minimumIndex, i = 0, lengh = array.length;
+  while(i < lengh){
+    minimumIndex = findMinimum(array.slice(i));
+    temp = array[i];
+    array[i] = array[minimumIndex+i];
+    array[minimumIndex+i] = temp;
+    i++;
+  }
+  return array;
+}
+console.log(selectionSort([5,1,12,-5,16,2,12,14]));
