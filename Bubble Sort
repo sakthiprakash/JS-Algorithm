@@ -1,0 +1,53 @@
+// Compare i and i+1 and swap if i is big move highest value last
+// Repeat till length-i
+// Bubble -> Move biggest last
+var testArr = [4,3,5,1,7,6,8,2];
+function bubbleSort(){
+	for(var i = 0; i < testArr.length; i++){
+		for(var j = 0; j < testArr.length - i; j++){
+          if(testArr[j] > testArr[j+1]){
+            var temp = testArr[j];
+            testArr[j] = testArr[j+1];
+            testArr[j+1] = temp;
+          }
+      }
+	}
+  return testArr;
+}
+console.log(bubbleSort());
+
+//Can do with other ways too
+
+//ii. Recurrsive:-
+
+function bubbleSortArr2(testArr, pointer = testArr.length - 1){
+  if(pointer === 0 ){
+    return testArr;
+  }
+  for(var j = 0; j < pointer; j++){
+    if(testArr[j] > testArr[j+1]){
+      var temp = testArr[j];
+      testArr[j] = testArr[j+1];
+      testArr[j+1] = temp;
+      }
+  }
+  return bubbleSortArr2(testArr, pointer - 1);
+}
+
+//iii. do while:-
+
+function bubbleSortArr3(testArr){
+  let swaps;
+  do {
+    swaps = false;
+    for (let i = 0; i < array.length - 1; i++) {
+      if (array[i] > array[i + 1]) {
+        let temp = array[i + 1];
+        array[i + 1] = array[i];
+        array[i] = temp;
+        swaps = true;
+      }
+    }
+  } while (swaps);
+  return array;
+}
