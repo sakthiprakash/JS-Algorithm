@@ -1,0 +1,34 @@
+var count = 0;
+function splitMergeSort(left, right){
+  // console.log(left,right)
+  var llen = left.length, rlen = right.length, result = [], l = 0, r = 0;
+  while(llen > l && rlen > r){
+    count++;
+    if(left[l] > right[r]){
+      result.push(right[r++]);
+    }else{
+      result.push(left[l++]);
+    }
+  }
+  //console.log(result)
+  return result.concat(left.slice(l)).concat(right.slice(r));
+}
+
+function mergeSort(array){
+  count++;
+  if(array.length < 2){
+    return array;
+  }
+  var mid, left, right;
+  mid = Math.floor(array.length/2);
+  left = array.slice(0,mid);
+  right =array.slice(mid)
+  //console.log(mid,left,right)
+  return splitMergeSort(mergeSort(left), mergeSort(right));
+}
+
+
+
+console.clear()
+console.log(mergeSort([2,5,1,9,7,6]));
+console.log(count)
