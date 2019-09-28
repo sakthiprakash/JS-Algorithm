@@ -1,0 +1,22 @@
+var quickSort = function quickSort(array) {
+    if (array.length < 2) return array;
+
+    var pivot = array[array.length - 1];
+    
+    var left = [],
+        right = [];
+
+    for (var i = 0; i < array.length - 1; i++) {
+        if (array[i] < pivot) {
+            left.push(array[i]);
+        } else {
+            right.push(array[i]);
+        }
+    }
+  
+    console.log(left, pivot, right)
+
+    return [].concat(quickSort(left), [pivot], quickSort(right));
+};
+console.clear();
+console.log(quickSort([2,5,1,9,7,6]));
